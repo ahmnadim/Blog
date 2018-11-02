@@ -18,6 +18,7 @@
 
     <!-- Bootstrap Core Css -->
     <link href="{{asset('assets/backend/plugins/bootstrap/css/bootstrap.css')}}" rel="stylesheet">
+    <link href="{{asset('assets/backend/plugins/ionicons.css')}}" rel="stylesheet">
 
     <!-- Waves Effect Css -->
     <link href="{{asset('assets/backend/plugins/node-waves/waves.css')}}" rel="stylesheet" />
