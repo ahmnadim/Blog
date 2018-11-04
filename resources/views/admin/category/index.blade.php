@@ -1,6 +1,6 @@
 @extends('layouts.backend.app')
 
-@section('title', '-Tag')
+@section('title', '-Category')
 
 @push('css')
 	 <!-- JQuery DataTable Css -->
@@ -10,8 +10,8 @@
 @section('content')
 <div class="container-fluid">
             <div class="block-header">
-               <a href="{{route('admin.tag.create')}}" class="btn btn-danger">
-                   <i class="material-icons">add</i><span>Add New Tag</span>
+               <a href="{{route('admin.category.create')}}" class="btn btn-danger">
+                   <i class="material-icons">add</i><span>Add New Category</span>
                </a>
             </div>
             <!-- Exportable Table -->
@@ -20,7 +20,7 @@
                     <div class="card">
                         <div class="header">
                             <h2>
-                                 ALL TAGS
+                                 ALL CATEGORIES
                             </h2>
                             <ul class="header-dropdown m-r--5">
                                 <li class="dropdown">
@@ -57,15 +57,15 @@
                                         </tr>
                                     </tfoot>
                                     <tbody>
-                                        @foreach($tags as $key=>$tag)
+                                        @foreach($categories as $key=>$category)
                                         <tr>
                                             <td>{{$key+1}}</td>
-                                            <td>{{$tag->name}}</td>
-                                            <td>{{$tag->created_at->diffForHumans()}}</td>
-                                            <td>{{$tag->updated_at->diffForHumans()}}</td>
-                                            <td class="text-center"><a class="btn btn-info waves-effect" href="{{ route('admin.tag.edit',$tag->id) }} "><i class="material-icons">edit</i> <span></span></a>
-                                                <button class="btn btn-danger" type="button" onclick="delete_tag({{$tag->id}})"><i class="material-icons">delete</i><span></span></button>
-                                                <form id="delete-form-{{$tag->id}}" action="{{ route('admin.tag.destroy',$tag->id) }}" method="post">
+                                            <td>{{$category->name}}</td>
+                                            <td>{{$category->created_at->diffForHumans()}}</td>
+                                            <td>{{$category->updated_at->diffForHumans()}}</td>
+                                            <td class="text-center"><a class="btn btn-info waves-effect" href="{{ route('admin.category.edit',$category->id) }} "><i class="material-icons">edit</i> <span></span></a>
+                                                <button class="btn btn-danger" type="button" onclick="delete_category({{$category->id}})"><i class="material-icons">delete</i><span></span></button>
+                                                <form id="delete-form-{{$category->id}}" action="{{ route('admin.category.destroy',$category->id) }}" method="post">
                                                     @csrf
                                                     @method('DELETE')
                                                 </form>
@@ -98,7 +98,7 @@
     <script src="{{asset('assets/backend/js/pages/tables/jquery-datatable.js')}}"></script>
     <script src="https://unpkg.com/sweetalert2@7.19.1/dist/sweetalert2.all.js"></script>
     <script type="text/javascript">
-        function delete_tag(id){
+        function delete_category(id){
                 const swalWithBootstrapButtons = swal.mixin({
                   confirmButtonClass: 'btn btn-success',
                   cancelButtonClass: 'btn btn-danger',
