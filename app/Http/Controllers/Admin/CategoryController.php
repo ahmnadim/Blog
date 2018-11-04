@@ -197,7 +197,7 @@ class CategoryController extends Controller
 
        }else{
 
-        $imageName = $category->name;
+        $imageName = $category->image;
        }
 
        $category->name=$request->name;
@@ -216,6 +216,19 @@ class CategoryController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $category = Category::find($id);
+        if (Storage::disk('public')->exists('category/'.$category->image)) 
+        {
+            Storage::disk('public')->delete('category/'.$category->image);
+        }
+
+        if (Storage::disk()->exists('category/slider/'.$category->image))
+        {
+            Storage::disk('public')->delete('category/slider'.$category->image);
+        }
+
+         $category->delete();
+        Toastr::success('Category Deleted Successfully!!!', 'success');
+        return redirect()->back();
     }
 }
