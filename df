@@ -1,0 +1,35 @@
+[33mcommit 458eb9b4dc360273b2ed337b011971eee673a680[m[33m ([m[1;36mHEAD -> [m[1;32mmaster[m[33m)[m
+Author: Ahmad Ul Hoq Nadim <ahmadulhoqnadim@gmail.com>
+Date:   Sun Nov 4 23:55:38 2018 +0600
+
+    Category Module-Delete Category Completed.
+
+[33mcommit f0ede4f7ce0c881cd425f08faf0fdeff28d9c0e0[m[33m ([m[1;31mblog/master[m[33m)[m
+Author: Ahmad Ul Hoq Nadim <ahmadulhoqnadim@gmail.com>
+Date:   Sun Nov 4 23:03:31 2018 +0600
+
+    Category Module-- Category-edit complete
+
+[33mcommit 3f23fba6b8ea366a76241f28f38db8d4fe558371[m
+Author: Ahmad Ul Hoq Nadim <ahmadulhoqnadim@gmail.com>
+Date:   Sun Nov 4 21:06:08 2018 +0600
+
+    Category Module-Add Category
+
+[33mcommit 9167f2a665fe0590e772c91f2c2f0f33b3bc52de[m
+Author: Ahmad Ul Hoq Nadim <ahmadulhoqnadim@gmail.com>
+Date:   Sun Nov 4 16:58:33 2018 +0600
+
+    added nadim method to admin/dashboradcontroller
+
+[33mcommit 022ac5243af89e195408624cb98ee403f06a23d2[m
+Author: Ahmad Ul Hoq Nadim <ahmadulhoqnadim@gmail.com>
+Date:   Fri Nov 2 18:56:59 2018 +0600
+
+    add icon and app.blade
+
+[33mcommit a6114812346805f97059e7b3b6e5e00f71b55471[m
+Author: Ahmad Ul Hoq Nadim <ahmadulhoqnadim@gmail.com>
+Date:   Mon Oct 29 18:49:10 2018 +0600
+
+    Blog System with Tag OPtion
