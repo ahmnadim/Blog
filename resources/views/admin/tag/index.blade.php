@@ -21,6 +21,8 @@
                         <div class="header">
                             <h2>
                                  ALL TAGS
+                                 <span class="badge bg-red">{{$tags->count()}}</span>
+
                             </h2>
                             <ul class="header-dropdown m-r--5">
                                 <li class="dropdown">
@@ -42,6 +44,7 @@
                                         <tr>
                                             <th>ID</th>
                                             <th>Name</th>
+                                            <th>Post Count</th>
                                             <th>Created At</th>
                                             <th>Updated At</th>
                                             <th>Action</th>
@@ -51,6 +54,7 @@
                                         <tr>
                                            <th>ID</th>
                                             <th>Name</th>
+                                            <th>Post Count</th>
                                             <th>Created At</th>
                                             <th>Updated At</th>
                                             <th>Action</th>
@@ -61,6 +65,7 @@
                                         <tr>
                                             <td>{{$key+1}}</td>
                                             <td>{{$tag->name}}</td>
+                                            <td>{{$tag->posts->count()}}</td>
                                             <td>{{$tag->created_at->diffForHumans()}}</td>
                                             <td>{{$tag->updated_at->diffForHumans()}}</td>
                                             <td class="text-center"><a class="btn btn-info waves-effect" href="{{ route('admin.tag.edit',$tag->id) }} "><i class="material-icons">edit</i> <span></span></a>

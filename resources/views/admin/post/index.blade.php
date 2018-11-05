@@ -1,6 +1,6 @@
 @extends('layouts.backend.app')
 
-@section('title', '-Category')
+@section('title', '-Posts')
 
 @push('css')
 	 <!-- JQuery DataTable Css -->
@@ -10,8 +10,8 @@
 @section('content')
 <div class="container-fluid">
             <div class="block-header">
-               <a href="{{route('admin.category.create')}}" class="btn btn-danger">
-                   <i class="material-icons">add</i><span>Add New Category</span>
+               <a href="{{route('admin.post.create')}}" class="btn btn-danger">
+                   <i class="material-icons">add</i><span>Add New Post</span>
                </a>
             </div>
             <!-- Exportable Table -->
@@ -20,9 +20,8 @@
                     <div class="card">
                         <div class="header">
                             <h2>
-                                 ALL CATEGORIES
-                                 <span class="badge bg-red">{{$categories->count()}}</span>
-
+                                 ALL POSTS
+                                 <span class="badge bg-red">{{$posts->count()}}</span>
                             </h2>
                             <ul class="header-dropdown m-r--5">
                                 <li class="dropdown">
@@ -43,8 +42,11 @@
                                     <thead>
                                         <tr>
                                             <th>ID</th>
-                                            <th>Name</th>
-                                            <th>Post Count</th>
+                                            <th>Title</th>
+                                            <th>Author</th>
+                                            <th><i class="material-icons">visibility</i></th>
+                                            <th>Is Approved</th>
+                                            <th>Status</th>
                                             <th>Created At</th>
                                             <th>Updated At</th>
                                             <th>Action</th>
@@ -53,24 +55,42 @@
                                     <tfoot>
                                         <tr>
                                            <th>ID</th>
-                                            <th>Name</th>
-                                            <th>Post Count</th>
+                                            <th>Title</th>
+                                            <th>Author</th>
+                                            <th><i class="material-icons">visibility</i></th>
+                                            <th>Is Approved</th>
+                                            <th>Status</th>
                                             <th>Created At</th>
                                             <th>Updated At</th>
                                             <th>Action</th>
                                         </tr>
                                     </tfoot>
                                     <tbody>
-                                        @foreach($categories as $key=>$category)
+                                        @foreach($posts as $key=>$post)
                                         <tr>
                                             <td>{{$key+1}}</td>
-                                            <td>{{$category->name}}</td>
-                                            <td>{{$category->posts->count()}}</td>
-                                            <td>{{$category->created_at->diffForHumans()}}</td>
-                                            <td>{{$category->updated_at->diffForHumans()}}</td>
-                                            <td class="text-center"><a class="btn btn-info waves-effect" href="{{ route('admin.category.edit',$category->id) }} "><i class="material-icons">edit</i> <span></span></a>
-                                                <button class="btn btn-danger" type="button" onclick="delete_category({{$category->id}})"><i class="material-icons">delete</i><span></span></button>
-                                                <form id="delete-form-{{$category->id}}" action="{{ route('admin.category.destroy',$category->id) }}" method="post">
+                                            <td>{{str_limit($post->title,20)}}</td>
+                                            <td>{{$post->user->name}}</td>
+                                            <td>{{$post->view_count}}</td>
+                                            <td>
+                                              @if($post->is_approved==true)
+                                                <span class="badge bg-blue">Approved</span>
+                                              @else
+                                                <span class="badge bg-red">Pending</span>
+                                              @endif
+                                            </td>
+                                            <td>
+                                               @if($post->status==true)
+                                                <span class="badge bg-blue">Published</span>
+                                              @else
+                                                <span class="badge bg-red">Pending</span>
+                                              @endif
+                                            </td>
+                                            <td>{{$post->created_at->diffForHumans()}}</td>
+                                            <td>{{$post->updated_at->diffForHumans()}}</td>
+                                            <td class="text-center"><a class="btn btn-info waves-effect" href="{{ route('admin.post.edit',$post->id) }} "><i class="material-icons">edit</i> <span></span></a>
+                                                <button class="btn btn-danger" type="button" onclick="delete_post({{$post->id}})"><i class="material-icons">delete</i><span></span></button>
+                                                <form id="delete-form-{{$post->id}}" action="{{ route('admin.post.destroy',$post->id) }}" method="post">
                                                     @csrf
                                                     @method('DELETE')
                                                 </form>
@@ -103,7 +123,7 @@
     <script src="{{asset('assets/backend/js/pages/tables/jquery-datatable.js')}}"></script>
     <script src="https://unpkg.com/sweetalert2@7.19.1/dist/sweetalert2.all.js"></script>
     <script type="text/javascript">
-        function delete_category(id){
+        function delete_post(id){
                 const swalWithBootstrapButtons = swal.mixin({
                   confirmButtonClass: 'btn btn-success',
                   cancelButtonClass: 'btn btn-danger',
