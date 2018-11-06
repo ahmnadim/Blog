@@ -18,7 +18,7 @@
             <div class="row clearfix">
                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                     <div class="card">
-                        <div class="header">
+                        <div class="header bg-cyan">
                             <h2>
                                  ALL POSTS
                                  <span class="badge bg-red">{{$posts->count()}}</span>
@@ -89,7 +89,7 @@
                                             <td>{{$post->created_at->diffForHumans()}}</td>
                                             {{-- <td>{{$post->updated_at->diffForHumans()}}</td> --}}
                                             <td class="text-center"><a class="btn btn-warning waves-effect" href="{{ route('admin.post.show',$post->id) }} "><i class="material-icons">visibility</i> </a>
-                                              
+
                                               <a class="btn btn-info waves-effect" href="{{ route('admin.post.edit',$post->id) }} "><i class="material-icons">edit</i> <span></span></a>
                                                 <button class="btn btn-danger" type="button" onclick="delete_post({{$post->id}})"><i class="material-icons">delete</i></button>
                                                 <form id="delete-form-{{$post->id}}" action="{{ route('admin.post.destroy',$post->id) }}" method="post">
