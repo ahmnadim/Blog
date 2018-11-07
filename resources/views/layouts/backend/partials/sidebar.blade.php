@@ -81,6 +81,14 @@
                             <span>Dashboard</span>
                         </a>
                     </li>
+
+                    <li class="{{Request::is('author/post*')? 'active':''}}">
+                        <a href="{{route('author.post.index')}} ">
+                            <i class="material-icons">library_books</i>
+                            <span>Posts</span>
+                        </a>
+                    </li>
+                        <li class="header">System</li> 
                      <li class="">
                          <a class="dropdown-item" href="{{ route('logout') }}"onclick="event.preventDefault();
                              document.getElementById('logout-form').submit();">
