@@ -133,7 +133,7 @@ class PostController extends Controller
     public function update(Request $request, Post $post)
     {
         $this->validate($request,[
-            'title'=>'required|unique:posts',
+            'title'=>'required',
             'image'=>'image|mimes:jpg,jpeg,png,bmp',
             'categories'=>'required',
             'tags'=>'required',
@@ -188,6 +188,25 @@ class PostController extends Controller
 
         Toastr::success('Post Updated Successfully...', 'success');
         return redirect()->route('admin.post.index');
+    }
+
+    public function pending()
+    {
+        $posts = Post::where('is_approved',false)->get();
+        return view('admin.post.index', compact('posts'));
+    }
+
+    public function approved($id)
+    {
+        $post = Post::find($id);
+
+        if ($post->is_approved == false) {
+            $post->is_approved = true;
+            $post->save();
+            Toastr::success('Approved Successfully!!!', 'success');
+        }
+
+        return redirect()->route('admin.post.pending');
     }
 
     /**
