@@ -13,7 +13,7 @@
 
     <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500" rel="stylesheet">
 
-
+    <link rel="icon" href="{{asset('assets/frontend/fonts/icon.png')}}" type="image/x-icon">
     <!-- Stylesheets -->
 
     <link href="{{asset('assets/frontend/css/bootstrap.css')}}" rel="stylesheet">
@@ -46,7 +46,7 @@
     
 @stack('js')
 
-    <script src="{{asset('assets/frontend/js/scripts.js')}}"></script>
+    
     
     <script src="http://cdn.bootcss.com/toastr.js/latest/js/toastr.min.js"></script>
         {!! Toastr::message() !!}
