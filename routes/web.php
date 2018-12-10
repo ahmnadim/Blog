@@ -28,6 +28,12 @@ Route::group(['as'=>'admin.', 'prefix'=>'admin', 'namespace'=>'Admin','middlewar
 
 	Route::get('/subscriber', 'SubscriberController@index')->name('subscriber.index');
 	Route::delete('/subscriber/{subscriber}', 'SubscriberController@destroy')->name('subscriber.destroy');
+
+	Route::get('settings', 'SettingsController@index')->name('settings');
+	Route::put('profile/update', 'SettingsController@updateProfile')->name('profile.update');
+
+	Route::put('password/update', 'SettingsController@updatePassword')->name('password.update');
+
 	
 });
 
