@@ -13,6 +13,8 @@
 
 Route::get('/', 'HomeController@index')->name('home');
 
+Route::get('post/details/{slug}', 'PostController@details')->name('post.details');
+
 Route::post('subscribe', 'SubscriberController@store')->name('subscribe.store');
 
 Auth::routes();
@@ -54,5 +56,5 @@ Route::group(['as'=>'author.', 'prefix'=>'author', 'namespace'=>'Author','middle
 	Route::put('password/update', 'SettingsController@updatePassword')->name('password.update');
 
 	Route::get('/favorite', 'FavoriteController@index')->name('favorite.posts');
-	
+
 });
