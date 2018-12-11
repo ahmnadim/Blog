@@ -68,6 +68,13 @@
                         </a>
                     </li>
 
+                    <li class="{{Request::is('admin/favorite')? 'active':''}}">
+                        <a href="{{route('admin.favorite.posts')}} ">
+                            <i class="material-icons">favorite</i>
+                            <span>Favorite Posts</span>
+                        </a>
+                    </li>
+
                     <li class="{{Request::is('admin/subscriber')? 'active':''}}">
                         <a href="{{route('admin.subscriber.index')}} ">
                             <i class="material-icons">subscriptions</i>
@@ -110,6 +117,13 @@
                         <a href="{{route('author.post.index')}} ">
                             <i class="material-icons">library_books</i>
                             <span>Posts</span>
+                        </a>
+                    </li>
+
+                    <li class="{{Request::is('author/favorite')? 'active':''}}">
+                        <a href="{{route('author.favorite.posts')}} ">
+                            <i class="material-icons">favorite</i>
+                            <span>Favorite Posts</span>
                         </a>
                     </li>
                         <li class="header">System</li> 

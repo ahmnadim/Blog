@@ -9,32 +9,17 @@
 
 @section('content')
 <div class="container-fluid">
-            <div class="block-header">
-               <a href="{{route('admin.post.create')}}" class="btn btn-danger">
-                   <i class="material-icons">add</i><span>Add New Post</span>
-               </a>
-            </div>
+            
             <!-- Exportable Table -->
             <div class="row clearfix">
                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                     <div class="card">
                         <div class="header bg-cyan">
                             <h2>
-                                 ALL PENDING POSTS
+                                ALL FAVORITE POSTS
                                  <span class="badge bg-red">{{$posts->count()}}</span>
                             </h2>
-                            <ul class="header-dropdown m-r--5">
-                                <li class="dropdown">
-                                    <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-                                        <i class="material-icons">more_vert</i>
-                                    </a>
-                                    <ul class="dropdown-menu pull-right">
-                                        <li><a href="javascript:void(0);">Action</a></li>
-                                        <li><a href="javascript:void(0);">Another action</a></li>
-                                        <li><a href="javascript:void(0);">Something else here</a></li>
-                                    </ul>
-                                </li>
-                            </ul>
+                            
                         </div>
                         <div class="body">
                             <div class="table-responsive">
@@ -44,24 +29,22 @@
                                             <th>ID</th>
                                             <th>Title</th>
                                             <th>Author</th>
-                                            <th><i class="material-icons">visibility</i></th>
-                                            <th>Is Approved</th>
-                                            <th>Status</th>
-                                            <th>Created At</th>
-                                            {{-- <th>Updated At</th> --}}
+                                            <th><i class="material-icons">favorite</i></th>
+                                            {{--  <th><i class="material-icons">comment</i></th> --}}
+                                              <th><i class="material-icons">visibility</i></th>
+
                                             <th>Action</th>
                                         </tr>
                                     </thead>
                                     <tfoot>
                                         <tr>
-                                           <th>ID</th>
+                                            <th>ID</th>
                                             <th>Title</th>
                                             <th>Author</th>
-                                            <th><i class="material-icons">visibility</i></th>
-                                            <th>Is Approved</th>
-                                            <th>Status</th>
-                                            <th>Created At</th>
-                                            {{-- <th>Updated At</th> --}}
+                                            <th><i class="material-icons">favorite</i></th>
+                                            {{--  <th><i class="material-icons">comment</i></th> --}}
+                                              <th><i class="material-icons">visibility</i></th>
+
                                             <th>Action</th>
                                         </tr>
                                     </tfoot>
@@ -71,30 +54,13 @@
                                             <td>{{$key+1}}</td>
                                             <td>{{str_limit($post->title,20)}}</td>
                                             <td>{{$post->user->name}}</td>
+                                            <td>{{$post->favorite_to_users->count()}}</td>
                                             <td>{{$post->view_count}}</td>
-                                            <td>
-                                              @if($post->is_approved==true)
-                                                <span class="badge bg-blue">Approved</span>
-                                              @else
-                                                <span class="badge bg-red">Pending</span>
-                                              @endif
-                                            </td>
-                                            <td>
-                                               @if($post->status==true)
-                                                <span class="badge bg-blue">Published</span>
-                                              @else
-                                                <span class="badge bg-red">Pending</span>
-                                              @endif
-                                            </td>
-                                            <td>{{$post->created_at->diffForHumans()}}</td>
-                                            {{-- <td>{{$post->updated_at->diffForHumans()}}</td> --}}
-                                            <td class="text-center"><a class="btn btn-warning waves-effect" href="{{ route('admin.post.show',$post->id) }} "><i class="material-icons">visibility</i> </a>
-
-                                              <a class="btn btn-info waves-effect" href="{{ route('admin.post.edit',$post->id) }} "><i class="material-icons">edit</i> <span></span></a>
-                                                <button class="btn btn-danger" type="button" onclick="delete_post({{$post->id}})"><i class="material-icons">delete</i></button>
-                                                <form id="delete-form-{{$post->id}}" action="{{ route('admin.post.destroy',$post->id) }}" method="post">
+                                            
+                                            <td class="text-center">    
+                                              <button class="btn btn-danger" type="button" onclick="delete_post({{$post->id}})"><i class="material-icons">delete</i></button>
+                                                <form id="delete-form-{{$post->id}}" action="{{ route('post.favorite',$post->id) }}" method="post">
                                                     @csrf
-                                                    @method('DELETE')
                                                 </form>
                                             </td>
                                         </tr>
