@@ -42,4 +42,9 @@ class User extends Authenticatable
     {
         return $this->belongsToMany('App\Post')->withTimeStamps();
     }
+
+    public function comments()
+    {
+        return $this->hasMany('App\Comment');
+    }
 }
