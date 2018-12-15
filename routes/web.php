@@ -12,6 +12,7 @@
 */
 
 Route::get('/', 'HomeController@index')->name('home');
+Route::get('posts', 'PostController@index')->name('posts.index');
 
 Route::get('post/details/{slug}', 'PostController@details')->name('post.details');
 
