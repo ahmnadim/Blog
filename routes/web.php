@@ -59,6 +59,9 @@ Route::group(['as'=>'author.', 'prefix'=>'author', 'namespace'=>'Author','middle
 	Route::get('settings', 'SettingsController@index')->name('settings');
 	Route::put('profile/update', 'SettingsController@updateProfile')->name('profile.update');
 
+	Route::get('comments', 'CommentController@index')->name('comment.index');
+	Route::delete('comments/{id}', 'CommentController@destroy')->name('comment.destroy');
+
 	Route::put('password/update', 'SettingsController@updatePassword')->name('password.update');
 
 	Route::get('/favorite', 'FavoriteController@index')->name('favorite.posts');
