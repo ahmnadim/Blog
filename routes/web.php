@@ -15,6 +15,9 @@ Route::get('/', 'HomeController@index')->name('home');
 Route::get('posts', 'PostController@index')->name('posts.index');
 
 Route::get('post/details/{slug}', 'PostController@details')->name('post.details');
+Route::get('posts-by-category/{slug}', 'PostController@postByCategory')->name('category.posts');
+
+Route::get('posts-by-tag/{slug}', 'PostController@postByTag')->name('tag.posts');
 
 Route::post('subscribe', 'SubscriberController@store')->name('subscribe.store');
 
@@ -47,7 +50,6 @@ Route::group(['as'=>'admin.', 'prefix'=>'admin', 'namespace'=>'Admin','middlewar
 	Route::put('password/update', 'SettingsController@updatePassword')->name('password.update');
 
 	Route::get('/favorite', 'FavoriteController@index')->name('favorite.posts');
-
 
 	
 });
