@@ -13,31 +13,33 @@ class PostController extends Controller
 
     public function index()
     {
-        $posts = Post::latest()->paginate(6);
+        $posts = Post::latest()->where('is_approved', 1)->where('status', 1)->paginate(6);
         return view('posts', compact('posts'));
     }
 
     public function details($slug)
     {
-    	$post = Post::where('slug', $slug)->first();
+    	$post = Post::where('slug', $slug)->where('is_approved', 1)->where('status', 1)->first();
     	$blogKey = 'blog_' . $post->id;
     	if (!Session::has($blogKey)) {
     		$post->increment('view_count');
     		session::put($blogKey, 1);
     	}
-    	$randompost = Post::all()->random(3);
+    	$randompost = Post::all()->where('is_approved', 1)->where('status', 1)->random(3);
     	return view('single-post', compact('post','randompost'));
     }
 
     public function postByCategory($slug)
     {
         $category = Category::where('slug', $slug)->first();
-        return view('postByCategory', compact('category'));
+        $posts = $category->posts->where('is_approved', 1)->where('status', 1);
+        return view('postByCategory', compact('category', 'posts'));
     }
 
     public function postByTag($slug)
     {
         $tag = Tag::where('slug', $slug)->first();
-        return view('postByTag', compact('tag'));
+        $posts = $tag->posts->where('is_approved', 1)->where('status', 1);
+        return view('postByTag', compact('tag', 'posts'));
     }
 }

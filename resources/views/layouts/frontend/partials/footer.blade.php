@@ -7,8 +7,7 @@
                 <div class="col-lg-4 col-md-6">
                     <div class="footer-section">
 
-                        <a class="logo" href="#"><img src="{{asset('assets/frontend/images/logo.png')}}" alt="Logo Image"></a>
-                        <p class="copyright">Bona @ 2017. All rights reserved.</p>
+                        <p class="copyright">{{config('app.name')}} @ 2017. All rights reserved.</p>
                         <p class="copyright">Designed by <a href="https://colorlib.com" target="_blank">Colorlib</a></p>
                         <ul class="icons">
                             <li><a href="#"><i class="ion-social-facebook-outline"></i></a></li>
@@ -25,15 +24,11 @@
                         <div class="footer-section">
                         <h4 class="title"><b>CATAGORIES</b></h4>
                         <ul>
-                            <li><a href="#">BEAUTY</a></li>
-                            <li><a href="#">HEALTH</a></li>
-                            <li><a href="#">MUSIC</a></li>
+                            @foreach($categories as $category)
+                                <li><a href="{{ route('category.posts',$category->slug) }}">{{$category->name}}</a></li>
+                            @endforeach
                         </ul>
-                        <ul>
-                            <li><a href="#">SPORT</a></li>
-                            <li><a href="#">DESIGN</a></li>
-                            <li><a href="#">TRAVEL</a></li>
-                        </ul>
+                       
                     </div><!-- footer-section -->
                 </div><!-- col-lg-4 col-md-6 -->
 
