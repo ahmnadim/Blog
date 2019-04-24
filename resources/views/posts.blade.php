@@ -63,7 +63,7 @@
                 @endforeach
             </div><!-- row -->
 
-           {{$posts->links()}}
+           
 
         </div><!-- container -->
     </section><!-- section -->

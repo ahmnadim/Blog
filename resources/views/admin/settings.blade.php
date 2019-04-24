@@ -131,7 +131,7 @@
                                 </div>
 
                                 <div class="row clearfix">
-                                   		<div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
+                                   	<div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
                                         <label for="password">New Password :</label>
                                     </div>
                                     
@@ -145,7 +145,7 @@
                                 </div>
 
                                 <div class="row clearfix">
-                                   		<div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
+                                   	<div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
                                         <label for="confirm_password">Confirm Password :</label>
                                     </div>
                                     
